@@ -122,6 +122,28 @@
 
 启动后，会自动打开浏览器（如果打开是空白，建议换成 **Chrome** 或者 **Edge** 打开）
 
+#### 生成 Windows 一键启动包
+
+如果需要基于当前源码自己生成一键启动包，请在 Windows PowerShell 中执行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\build-windows-portable.ps1
+```
+
+生成结果位于：
+
+```text
+dist\MoneyPrinterTurbo-windows-portable.zip
+```
+
+解压后双击 `start.bat` 即可启动 Web 界面。默认生成的包不会复制本机 `config.toml`、`storage`、`logs`、`models`、`.git` 和本地 Agent 配置文件，避免把 API Key、任务产物、大模型文件或个人配置打进分发包。脚本会从 `config.example.toml` 生成一份干净的 `config.toml`，使用者启动后再在 WebUI 或配置文件中填写自己的 Key。
+
+如果希望生成包内的 `update.bat` 可以执行 `git pull` 更新代码，打包时增加 `-IncludeGit`：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\build-windows-portable.ps1 -IncludeGit
+```
+
 ## 安装部署 📥
 
 ### 前提条件

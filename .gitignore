@@ -27,8 +27,12 @@ node_modules
 venv/
 .venv
 
-# Debug and test files
+# Agent 配置文件（个人本地，不提交到上游 fork）
+AGENTS.md
 CLAUDE.md
+GEMINI.md
+
+# Debug and test files
 debug/
 debug_*.py
 test_*.py
